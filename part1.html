@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="part1">
+<head>
+	<title>Belajar Angular JS</title>
+</head>
+<body>
+
+	<div ng-controller="ctrl1">
+		<input type="text" ng-model="nama" />
+		<button ng-click="add()">Add</button>
+
+		<ul>
+			<li ng-repeat="n in names">{{n}} - <button ng-click="remove(n)">Remove</button></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="app/js/angular.min.js"></script>
+	<script>
+		var app = angular.module("part1", []);
+
+		app.controller("ctrl1", function($scope){
+			$scope.names = ['Imade','Vlado','Purwaka','Tony','Atep','Hariyono'];
+
+			$scope.add = function(){
+				$scope.names.push($scope.nama);
+				$scope.nama = '';
+			}
+
+			$scope.remove = function(n){
+				var index = $scope.names.indexOf(n);
+				$scope.names.splice(index, 1);
+			}
+		});
+	</script>
+</body>
+</html>
