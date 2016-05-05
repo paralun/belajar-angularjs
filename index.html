@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Belajar Angular JS</title>
+</head>
+<body ng-controller="ctrl">
+
+	<h1>Kalkulator Sederhana</h1>
+
+	<table>
+		<tr>
+			<td>Bilangan Pertama :</td>
+			<td><input type="number" ng-model="bil1" /></td>
+		</tr>
+		<tr>
+			<td>Bilangan Kedua :</td>
+			<td><input type="number" ng-model="bil2" /></td>
+		</tr>
+		<tr>
+			<td><button ng-click="tambah()">Tambah</button>|<button ng-click="kurang()">Kurang</button></td>
+			<td><button ng-click="kali()">Kali</button>|<button ng-click="bagi()">Bagi</button></td>
+		</tr>
+		<tr>
+			<td>Hasil :</td>
+			<td>{{hasil}}</td>
+		</tr>
+	</table>
+
+	<script type="text/javascript" src="app/js/angular.min.js"></script>
+	<script type="text/javascript" src="app/js/app.js"></script>
+</body>
+</html>
