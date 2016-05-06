@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="app4">
+<head>
+	<title>Belajar Angular JS</title>
+</head>
+<body>
+	<!-- Menggunakan $rootScope -->
+
+	<div ng-controller="ctrl4">
+		Nama : {{nama}} <br />
+		<div ng-controller="ctrl4a">
+			Alamat lengkap {{nama}} adalah : <br />
+			Alamat 	: {{alamat}} <br />
+			RT 		: {{rt}} <br />
+			RW 		: {{rw}} <br />
+		</div>
+	</div>
+
+	<script type="text/javascript" src="app/js/angular.min.js"></script>
+	<script>
+		var app = angular.module("app4", []).run(["$rootScope", function($rootScope){
+			$rootScope.RT = "04";
+			$rootScope.RW = "02";
+		}]);
+
+		app.controller("ctrl4", function($scope){
+			$scope.nama = "Bambang";
+		});
+
+		app.controller("ctrl4a", ["$scope", "$rootScope", function($scope, $rootScope){
+			$scope.alamat = "Bandung";
+			$scope.rt = $rootScope.RT;
+			$scope.rw = $rootScope.RW;
+		}]);
+	</script>
+</body>
+</html>
