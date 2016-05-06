@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app6">
+<head>
+	<title>Belajar Angular JS</title>
+</head>
+<body>
+	<!-- Menggunakan ng-repeat -->
+	<div ng-controller="ctrl6">
+		<h2>Daftar Barang</h2>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>#ID</th>
+					<th>Nama Barang</th>
+					<th>Kategori</th>
+					<th>Stok</th>
+					<th>Harga</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="b in barangs">
+					<td>{{b.id}}</td>
+					<td>{{b.nama}}</td>
+					<td>{{b.kategori}}</td>
+					<td>{{b.stok}}</td>
+					<td>{{b.harga}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script type="text/javascript" src="app/js/angular.min.js"></script>
+	<script>
+		var app = angular.module("app6", []);
+		app.controller("ctrl6", function($scope, $http, $log){
+			$http.get("app/data/barang.json").then(function(response){
+				$scope.barangs = response.data;
+			}, function(response){
+				$log.log("Error Data");
+			});
+		});
+	</script>
+</body>
+</html>
