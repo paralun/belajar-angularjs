@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app2">
+<head>
+	<title>Belajar Angular JS</title>
+</head>
+<body>
+
+	<div ng-controller="ctrl2">
+		Nama 	: {{nama}} <br />
+		Alamat 	: {{alamat}} <br />
+		Umur 	: {{getUmur()}} <br />
+	</div>
+
+	<script type="text/javascript" src="app/js/angular.min.js"></script>
+	<script>
+		var app = angular.module("app2", []);
+
+		app.controller("ctrl2", ["$scope", function(person){
+			person.nama = "Agus.";
+			person.alamat = "Bandung";
+			person.getUmur = function(){
+				return 20;
+			}
+		}]);
+	</script>
+</body>
+</html>
