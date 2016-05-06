@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="app7">
+<head>
+	<title>Belajar Angular JS</title>
+</head>
+<body>
+
+	<!-- Menggunakan Factory -->
+
+	<div ng-controller="ctrl7">
+		<form ng-submit="add()">
+			<input type="number" ng-model="bil1" />
+			<input type="number" ng-model="bil2" />
+			<input type="submit" value="Hitung" />
+		</form>
+		Hasil: <span ng-bind="hasil"></span>
+	</div>
+
+	<script type="text/javascript" src="app/js/angular.min.js"></script>
+	<script>
+		var app = angular.module("app7", []);
+
+		app.controller("ctrl7", ["$scope", "calcFactory", function($scope, calcFactory){
+			$scope.bil1 = 10;
+			$scope.bil2 = 10;
+
+			$scope.add = function(){
+				//$scope.hasil = calcFactory.getAdd($scope.bil1, $scope.bil2);
+
+				<!-- Menggunakan callback -->
+				calcFactory.getAdd($scope.bil1, $scope.bil2, function(result){
+					$scope.hasil = result;
+				});
+			}
+		}]);
+
+		app.factory("calcFactory", ["$log", function($log){
+			$log.log("Memanggi Factory");
+			var calcService = {};
+
+			//calcService.getAdd = function(a, b){
+			//	return a + b;
+			//}
+
+			<!-- Menggunakan callback -->
+			calcService.getAdd = function(a, b, callback){
+				var num = a + b;
+				callback(num);
+			}
+			return calcService;
+		}]);
+	</script>
+</body>
+</html>
