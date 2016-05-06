@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="app8">
+<head>
+	<title>Belajar Angular JS</title>
+</head>
+<body>
+
+	<!-- Menggunakan Service -->
+
+	<div ng-controller="ctrl8">
+		<form ng-submit="add()">
+			<input type="number" ng-model="bil1" />
+			<input type="number" ng-model="bil2" />
+			<input type="submit" value="Hitung" />
+		</form>
+		Hasil: <span ng-bind="hasil"></span>
+	</div>
+
+	<script type="text/javascript" src="app/js/angular.min.js"></script>
+	<script>
+		var app = angular.module("app8", []);
+
+		app.controller("ctrl8", ["$scope", "calcService", function($scope, calcService){
+			$scope.bil1 = 10;
+			$scope.bil2 = 10;
+
+			$scope.add = function(){
+				//$scope.hasil = calcService.getAdd($scope.bil1, $scope.bil2);
+
+				<!-- Menggunakan callback -->
+				calcService.getAdd($scope.bil1, $scope.bil2, function(result){
+					$scope.hasil = result;
+				});
+			}
+		}]);
+
+		app.service("calcService", ["$log", function($log){
+			$log.log("Memanggi Service");
+
+			//this.getAdd = function(a, b){
+			//	return a + b;
+			//}
+
+			<!-- Menggunakan callback -->
+			this.getAdd = function(a, b, callback){
+				var num = a + b;
+				callback(num);
+			}
+		}]);
+	</script>
+</body>
+</html>
