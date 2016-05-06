@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="app5">
+<head>
+	<title>Belajar Angular JS</title>
+</head>
+<body>
+	<!-- Menggunakan ng-repeat -->
+	<div ng-controller="ctrl5">
+		<h2>Daftar Barang</h2>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>#ID</th>
+					<th>Nama Barang</th>
+					<th>Kategori</th>
+					<th>Stok</th>
+					<th>Harga</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="b in barangs">
+					<td>{{b.id}}</td>
+					<td>{{b.nama}}</td>
+					<td>{{b.kategori}}</td>
+					<td>{{b.stok}}</td>
+					<td>{{b.harga}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script type="text/javascript" src="app/js/angular.min.js"></script>
+	<script>
+		var app = angular.module("app5", []);
+		app.controller("ctrl5", function($scope){
+			$scope.barangs = [
+				{
+					"id":"B001",
+					"nama":"Barang 1",
+					"kategori":"Makanan",
+					"stok":10,
+					"harga":20000
+				},
+				{
+					"id":"B002",
+					"nama":"Barang 2",
+					"kategori":"Minuman",
+					"stok":10,
+					"harga":20000
+				},
+				{
+					"id":"B003",
+					"nama":"Barang 3",
+					"kategori":"Makanan",
+					"stok":10,
+					"harga":18000
+				},
+				{
+					"id":"B004",
+					"nama":"Barang 4",
+					"kategori":"Minuman",
+					"stok":10,
+					"harga":30000
+				},
+				{
+					"id":"B005",
+					"nama":"Barang 5",
+					"kategori":"Makanan",
+					"stok":70,
+					"harga":40000
+				},
+				{
+					"id":"B006",
+					"nama":"Barang 6",
+					"kategori":"Minuman",
+					"stok":22,
+					"harga":15000
+				}
+			];
+		});
+	</script>
+</body>
+</html>

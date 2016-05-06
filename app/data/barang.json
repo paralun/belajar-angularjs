@@ -1,0 +1,44 @@
+[
+	{
+		"id":"B001",
+		"nama":"Barang 1",
+		"kategori":"Makanan",
+		"stok":10,
+		"harga":20000
+	},
+	{
+		"id":"B002",
+		"nama":"Barang 2",
+		"kategori":"Minuman",
+		"stok":10,
+		"harga":20000
+	},
+	{
+		"id":"B003",
+		"nama":"Barang 3",
+		"kategori":"Makanan",
+		"stok":10,
+		"harga":18000
+	},
+	{
+		"id":"B004",
+		"nama":"Barang 4",
+		"kategori":"Minuman",
+		"stok":10,
+		"harga":30000
+	},
+	{
+		"id":"B005",
+		"nama":"Barang 5",
+		"kategori":"Makanan",
+		"stok":70,
+		"harga":40000
+	},
+	{
+		"id":"B006",
+		"nama":"Barang 6",
+		"kategori":"Minuman",
+		"stok":22,
+		"harga":15000
+	}
+]
