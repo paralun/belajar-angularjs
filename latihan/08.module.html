@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>AngularJS - Modules</title>
+	<script type="text/javascript" src="angular-1.5.8/angular.min.js"></script>
+	<script type="text/javascript" src="module/mainApp.js"></script>
+	<script type="text/javascript" src="controller/student_controller.js"></script>
+
+	<style type="text/css">
+		table, th, td {
+			border: 1px solid grey;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+
+		table tr:nth-child(odd) {
+			background-color: #f2f2f2;
+		}
+
+		table tr:nth-child(even) {
+			background-color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+
+<div ng-controller="studentCtrl">
+	<h2>Sample Application</h2>
+	<table border="0">
+		<tr>
+			<td>Enter First Name:</td>
+			<td><input type="text" name="firstname" ng-model="student.firstname"></td>
+		</tr>
+		<tr>
+			<td>Enter Last Name:</td>
+			<td><input type="text" name="lastname" ng-model="student.lastname"></td>
+		</tr>
+		<tr>
+			<td>Full Name:</td>
+			<td>{{student.fullname() | uppercase}}</td>
+		</tr>
+		<tr>
+			<td>Subject:</td>
+			<td>
+				<table>
+					<tr>
+						<td>Name</td>
+						<td>Marks</td>
+					</tr>
+					<tr ng-repeat="subject in student.subjects | orderBy: 'marks'">
+						<td>{{subject.name}}</td>
+						<td>{{subject.marks}}</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</body>
+</html>
