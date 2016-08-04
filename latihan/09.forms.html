@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>AngularJS - Forms</title>
+	<style type="text/css">
+		table, th, td {
+			border: 1px solid grey;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+
+		table tr:nth-child(odd) {
+			background-color: #f2f2f2;
+		}
+
+		table tr:nth-child(even) {
+			background-color: #ffffff;
+		}
+	</style>
+</head>
+<body>
+<!-- Events: ng-click, ng-dbl-click, ng-mousedown, ng-mouseup, ng-mouseenter, ng-mouseleave, ng-mousemove, ng-mouseover, ng-keydown, ng-keyup, ng-keypress, ng-change -->
+<!-- Validate: $dirty, $invalid, $error -->
+<div ng-controller="ctrl">
+<h1>Sample Application</h1>
+	<form name="stdForm" novalidate="">
+		<table border="0">
+			<tr>
+				<td>Enter First name:</td>
+				<td>
+					<input type="text" name="firstname" ng-model="firstname" required>
+					<span style="color:red" ng-show="stdForm.firstname.$dirty && stdForm.firstname.$invalid">
+						<span ng-show="stdForm.firstname.$error.required"> First Name is required. </span>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>Enter Last name:</td>
+				<td>
+					<input type="text" name="lastname" ng-model="lastname" required>
+					<span style="color:red" ng-show="stdForm.lastname.$dirty && stdForm.lastname.$invalid">
+						<span ng-show="stdForm.lastname.$error.required">Last Name is required</span>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td>
+					<input type="email" name="email" ng-model="email" length="100", required>
+					<span style="color:red" ng-show="stdForm.email.$dirty && stdForm.email.$invalid">
+						<span ng-show="stdForm.email.$error.required">Email is required</span>
+						<span ng-show="stdForm.email.$error.email">Invalid email address</span>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button ng-click="reset()">Reset</button>
+				</td>
+				<td>
+					<button ng-disabled="stdForm.firstname.$dirty && stdForm.firstname.$invalid || stdForm.lastname.$dirty && stdForm.lastname.$invalid || stdForm.email.$dirty && stdForm.email.$invalid" ng-click="notif=true">Submit</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<span ng-show="notif">Data Sudah di Submit</span>
+</div>
+
+<script type="text/javascript" src="angular-1.5.8/angular.min.js"></script>
+<script type="text/javascript">
+	var app = angular.module("app", []);
+
+	app.controller("ctrl", function($scope){
+		$scope.reset = function(){
+			$scope.firstname = "Bambang";
+			$scope.lastname = "Gunawan";
+			$scope.email = "bambang@gmail.com";
+			$scope.notif = false;
+		}
+
+		$scope.reset();
+	});
+</script>
+</body>
+</html>
